@@ -1,0 +1,10 @@
+.about-movie-card {
+  box-sizing: border-box;
+  width: 500px;
+  height: 600px;
+  background-color: white;
+  padding: 10px;
+  &_center {
+    margin: 7vh auto;
+  }
+}

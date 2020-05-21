@@ -1,0 +1,16 @@
+.modalWindow {
+  position: fixed;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  &::before{
+    content: "\02DF";
+    color: #fff;
+    font-size: 50px;
+    position: absolute;
+    right: 15%;
+    top: 10%;
+    cursor: pointer;
+  }
+}

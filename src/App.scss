@@ -1,0 +1,25 @@
+@import "scss/normalize";
+@import "./components/about/about";
+@import "./components/button/button";
+@import "./components/input/input";
+@import "./components/loader/loader";
+@import "components/card/card";
+@import "./containers/navbar/navbar";
+@import "containers/navPath/navPath";
+@import "./containers/search/search";
+@import "containers/cards/cards";
+@import "./containers/content/content";
+@import "./containers/footer/footer";
+@import "./containers/navpages/navPages";
+@import "components/modalWindow/modalWindow";
+@import "./components/AboutMovie/aboutMovie";
+
+html {
+  overflow-y: scroll;
+  //overflow:hidden;
+  //TODO: prohibit the scrolling while modal window is open
+}
+
+body {
+  background: linear-gradient(90deg, #fd8355 0%, #f0576c 37%, #f79cbd 100%);
+}

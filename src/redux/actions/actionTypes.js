@@ -1,0 +1,10 @@
+export const ShowLoader = "ShowLoader";
+export const HideLoader = "HideLoader";
+export const GetMoviesSuccess = "GetMoviesSuccess";
+export const SetNumOfPages = "setNumOfPages";
+export const ShowFooter = "ShowFooter";
+export const HideFooter = "HideFooter";
+export const ShowModal = "ShowModal";
+export const CloseModal = "CloseModal";
+export const ShowSelectedMovie = "ShowSelectedMovie";
+export const SelectMovie = "SelectMovie";

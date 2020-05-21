@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+.card__item {
+  height: 400px;
+  width: 185px;
+  background-color: antiquewhite;
+  cursor: pointer;
+  transition: scale, 0.3s ease-in-out;
+  &_m10 {
+    margin: 10px;
+  }
+  &:hover {
+    transform: scale(1.05, 1.05);
+  }
+}
+
+.card__img {
+  height: 278px;
+  width: 185px;
+}
+
+.card__rating {
+  font-size: 20px;
+  &_m1tb3lr {
+    margin: 1px 3px;
+  }
+  &::before{
+    content: "\2605";
+    color: gold;
+  }
+}
+
+.card__title {
+  font-family: 'Anton', sans-serif;
+  width: 90%;
+  text-align: center;
+  margin: 0;
+  padding: 10% 5%;
+}
