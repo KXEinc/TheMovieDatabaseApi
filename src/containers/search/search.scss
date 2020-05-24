@@ -1,5 +1,46 @@
 .search {
-  &_ml2 {
-    margin-left: 0.5%;
+  &__container {
+    display: flex;
+    padding-top: 25px;
+    height: 100%;
+    width: 20%;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  &__input {
+    list-style-type: none;
+    width: 100%;
+    padding-left: 0;
+    border: 1px solid black;
+  }
+
+  &__item {
+
+    &_pt5 {
+      padding-top: 5px;
+    }
+    &_plr5 {
+      padding: 0 5px;
+    }
+  }
+
+  &__list {
+    max-height: 50vh;
+    list-style-type: none;
+    background-color: white;
+    padding: 0;
+    width: 100%;
+    &_ml5 {
+      margin-left: 5%;
+    }
+    & :last-child {
+      padding-bottom: 5px;
+    }
+    & :first-child {
+      padding-bottom: 0px;
+    }
+    &_overflow {
+      overflow-y: auto;
+    }
   }
 }

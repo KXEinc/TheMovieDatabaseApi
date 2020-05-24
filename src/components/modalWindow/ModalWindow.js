@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { closeModal } from '../../redux/actions/actions'
 
 const ModalWindow = (props) => (
-  <div className={'modalWindow'} onClick={() => props.CloseModal()}>{props.children}</div>
+  <div className={'modalWindow'} onClick={() => props.CloseModal()}></div>
 );
 
 const mapReducerToProps = reducer => {

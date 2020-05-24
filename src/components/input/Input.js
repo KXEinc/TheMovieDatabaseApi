@@ -1,10 +1,15 @@
 import React from "react";
 
 
-export default () => (
+export default ({onchange, value, className, type, placeholder, onkeydown, readonly, tabindex}) => (
   <input
-    className={"search__input search__input_mlr3"}
-    type={"search"}
-    placeholder={"Enter the movie"}
+    tabIndex={tabindex}
+    onChange={onchange}
+    onKeyDown={onkeydown}
+    value={value}
+    className={className}
+    type={type}
+    placeholder={placeholder}
+    readOnly={!readonly}
   />
 );

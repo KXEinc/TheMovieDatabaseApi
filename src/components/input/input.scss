@@ -1,9 +1,11 @@
 .search {
- &__input {
-
-   height: 80%;
-   &_mlr3 {
-     margin-right: 3px;
- }
- }
+  &__input {
+    width: 100%;
+    &[readonly] {
+      background-color: lightgray;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
 }

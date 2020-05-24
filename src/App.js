@@ -4,37 +4,42 @@ import "./App.scss";
 import { Route, Switch, withRouter } from "react-router-dom";
 import NavBar from "./containers/navbar/NavBar";
 import About from "./components/about/about";
-import Cards from "./containers/cards/cards";
-import Content from "./containers/content/content";
+import Cards from "./containers/cards/Cards";
+import { Content } from './containers/content/Content'
 import { connect } from "react-redux";
 import { getMovies } from "./redux/actions/actions";
-import Footer from "./containers/footer/footer";
-import ModalWindow from "./components/modalWindow/modalWindow";
+import Footer from "./containers/footer/Footer";
+import ModalWindow from "./components/modalWindow/ModalWindow";
 import Loader from "./components/loader/Loader";
-import AboutMovie from "./components/AboutMovie/aboutMovie";
+import AboutMovie from "./components/AboutMovie/AboutMovie";
+import ScrollHandler from './hoc/ScrollHandler'
 
 const App = (props) => {
+  console.log('kek')
   useEffect(() => {
-    props.GetMovies(props);
+    props.getMovies(props);
     // eslint-disable-next-line
-  }, [props.pages]);
-
+  }, []);
   return (
     <>
       {props.showModal && (
-        <ModalWindow>
-          <AboutMovie/>
-        </ModalWindow>
+        <>
+          <ModalWindow />
+          <AboutMovie />
+        </>
       )}
-      <NavBar />
-      {props.displayLoader && <Loader />}
-      <Content>
-        <Switch>
-          <Route exact path={`/${props.page}`} component={Cards} />
-          <Route path="/about" component={About} />
-        </Switch>
-      </Content>
-      {props.showFooter && <Footer />}
+      <ScrollHandler>
+        <NavBar />
+        {props.displayLoader && <Loader />}
+        <Content>
+          <Switch>
+            <Route exact path={`/${props.page}`} component={Cards} />
+            <Route path={`/search/${props.searchValue}`} component={Cards} />
+            <Route path="/about" component={About} />
+          </Switch>
+        </Content>
+        {props.showFooter && <Footer />}
+      </ScrollHandler>
     </>
   );
 };
@@ -48,12 +53,13 @@ const mapStateToProps = (state) => {
     showFooter: state.showFooter,
     showModal: state.showModal,
     movies: state.movies,
+    searchValue: state.searchInputValue
   };
 };
 
 const mapReducerToProps = (reducer) => {
   return {
-    GetMovies: (props) => reducer(getMovies(props)),
+    getMovies: (props) => reducer(getMovies(props)),
   };
 };
 

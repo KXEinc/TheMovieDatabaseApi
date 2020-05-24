@@ -13,13 +13,12 @@
 @import "./containers/navpages/navPages";
 @import "components/modalWindow/modalWindow";
 @import "./components/AboutMovie/aboutMovie";
-
-html {
-  overflow-y: scroll;
-  //overflow:hidden;
-  //TODO: prohibit the scrolling while modal window is open
-}
+@import "hoc/scrollhandler";
 
 body {
   background: linear-gradient(90deg, #fd8355 0%, #f0576c 37%, #f79cbd 100%);
+}
+
+ul {
+  margin: 0;
 }

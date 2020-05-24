@@ -1,12 +1,12 @@
 import React from "react";
 
-import Search from "../search/search"
+import Search from "../search/Search"
 import NavPath from '../navPath/NavPath'
 
 
 export default () => (
   <div className={"navBar"}>
-    <Search className={"search__input search__input_mlr3"}/>
+    <Search />
     <NavPath className={'navPath'}/>
   </div>
 );

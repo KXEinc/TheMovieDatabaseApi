@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { hideFooter, showFooter } from "../../redux/actions/actions";
+import { allowInput, clearSearch, hideFooter, prohibitInput } from '../../redux/actions/actions'
 
 const About = (props) => {
   useEffect(() => {
-    props.HideFooter();
+    props.hideFooter();
+    props.clearSearch();
+    props.prohibitInput()
+    return () => props.allowInput();
     // eslint-disable-next-line
   }, []);
 
@@ -20,10 +23,14 @@ const About = (props) => {
   );
 };
 
+
+
 const mapReducerToProps = (reducer) => {
   return {
-    ShowFooter: () => reducer(showFooter()),
-    HideFooter: () => reducer(hideFooter()),
+    hideFooter: () => reducer(hideFooter()),
+    clearSearch: () => reducer(clearSearch()),
+    allowInput: () => reducer(allowInput()),
+    prohibitInput: () => reducer(prohibitInput()),
   };
 };
 
