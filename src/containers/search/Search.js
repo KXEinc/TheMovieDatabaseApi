@@ -1,81 +1,35 @@
 import React from "react";
-import Input from "../../components/input/Input";
 import { connect } from "react-redux";
-import {
-  searchInputHandler,
-  showFindedMovie,
-  showFindedMovieOnPage,
-} from "../../redux/actions/actions";
-import { withRouter } from "react-router-dom";
+import SearchDrawer from "../../components/SearchDrawer/SearchDrawer";
+import { fetchSearch } from '../../redux/actions/fetchActions'
+import { clearSearchList } from '../../redux/actions/displayActions'
 
-const Search = ({
-  inputHandler,
-  inputValue,
-  searchResult,
-  allowInput,
-  showSearchResultsOnPage,
-  showFindedMovie,
-  history,
-}) => {
-  const searchResultRender = ({ key }) => {
-    if (key === "Enter") {
-        history.push(`/search/${inputValue}`);
-        showSearchResultsOnPage(searchResult);
-    }
-  };
-  return (
-    <div className={"search__container"}>
-      <ul className={"search__input search__list_ml5"}>
-        <li>
-          <Input
-            tabndex={"0"}
-            onchange={inputHandler}
-            onkeydown={(e) => searchResultRender(e)}
-            value={inputValue}
-            className={"search__input"}
-            type={"search"}
-            placeholder={"Enter the movie's name"}
-            readonly={allowInput}
-          />
-        </li>
-        <li>
-          <ul className={"search__list search__list_overflow"}>
-            {searchResult.results &&
-              searchResult.results.map((el) => {
-                return (
-                  <li
-                    key={el.id}
-                    className={"search__item_pt5 search__item_plr5"}
-                    onClick={() => showFindedMovie(el)}
-                    tabIndex={"0"}
-                  >
-                    {el.title}
-                  </li>
-                );
-              })}
-          </ul>
-        </li>
-      </ul>
-    </div>
-  );
+
+
+const Search = ({clearSearchList, searchResults, startFetchSearch, value, allowInput }) => {
+  return <SearchDrawer inputHandler={startFetchSearch}
+                       inputValue={value}
+                       searchResults={searchResults}
+                       clearSearchList={clearSearchList}
+                       allowInput={allowInput}
+
+  />;
 };
 
 const mapStateToProps = (state) => {
   return {
-    inputValue: state.searchInputValue,
-    allowInput: state.allowInput,
-    searchResult: state.searchResult,
-  };
+    value: state.display.searchInputValue,
+    searchResults: state.display.results,
+    allowInput: state.ui.allowInput
+
+  }
 };
 
-const mapReducerToProps = (reducer) => {
-  // noinspection JSUnusedGlobalSymbols
+const mapDispatchToProps = dispatch => {
   return {
-    inputHandler: (event) => reducer(searchInputHandler(event.target.value)),
-    showFindedMovie: (el) => reducer(showFindedMovie(el)),
-    showSearchResultsOnPage: (searchResult) =>
-      reducer(showFindedMovieOnPage(searchResult)),
+    startFetchSearch: (value, path) => dispatch(fetchSearch(value, path)),
+    clearSearchList: result => dispatch(clearSearchList(result))
   };
 };
 
-export default connect(mapStateToProps, mapReducerToProps)(withRouter(Search));
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

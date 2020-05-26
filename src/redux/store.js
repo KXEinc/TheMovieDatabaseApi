@@ -1,9 +1,21 @@
-import { applyMiddleware, createStore } from "redux";
-import { rootReducer } from "./reducers/rootReducer";
+import { applyMiddleware, compose, createStore } from "redux";
+import rootReducer from "./reducers/rootReducer";
 import reduxThunk from "redux-thunk";
-import { logger } from 'redux-logger/src'
+import createSagaMiddleware from "redux-saga";
+import rootSaga from "./saga/sagas";
 
+const composeEnhancers =
+  (typeof window !== "undefined" &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose;
 // noinspection JSCheckFunctionSignatures
-const store = createStore(rootReducer, applyMiddleware(reduxThunk, logger));
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(reduxThunk, sagaMiddleware))
+);
+
+sagaMiddleware.run(rootSaga);
 
 export default store;

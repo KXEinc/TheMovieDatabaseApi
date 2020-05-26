@@ -10,6 +10,6 @@ export default ({onchange, value, className, type, placeholder, onkeydown, reado
     className={className}
     type={type}
     placeholder={placeholder}
-    readOnly={!readonly}
+    readOnly={readonly}
   />
 );
