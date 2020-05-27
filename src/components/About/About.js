@@ -30,7 +30,7 @@ const About = (props) => {
         This is my <strong>AWESOME</strong> project!
         <br />I hope you will like it!
         <br />
-        Version: beta 0.1.4
+        Version: beta 0.1.6
       </p>
     </div>
   );

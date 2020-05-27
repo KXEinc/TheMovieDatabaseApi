@@ -1,13 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { posterURL } from "../../API/API";
 
 
-const AboutMovieDrawer = ({ movie: { adult, original_language, overview, poster_path, release_date, title }, clearSearchList, clearInput }) => {
+const AboutMovieDrawer = ({ movie: { adult, original_language, overview, poster_path, release_date, title } }) => {
   //eslint-disable-next-line
-  useEffect(() => {
-    clearInput();
-    clearSearchList();
-  }, [])
+
   const poster =
     poster_path
       ? posterURL.concat(poster_path)
