@@ -8,7 +8,7 @@ import {
   SearchSuccsess,
   SetNumOfPages,
   ShowSelectedMovie,
-} from './actionTypes'
+} from "./actionTypes";
 
 export function getMoviesSuccess({ page, total_pages, results, genre_ids }) {
   return {
@@ -78,7 +78,7 @@ export function clearSearchList(result = [], path) {
 export function getSimilarAndRecommendationsSuccsess(payload) {
   return {
     type: GetSimilarAndRecommendationsSuccsess,
-    payload
+    payload,
   };
 }
 

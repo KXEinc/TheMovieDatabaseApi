@@ -1,23 +1,18 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import Carousel from '../../components/Carousel/Carousel'
+import React from "react";
+import { connect } from "react-redux";
+import Carousel from "../../components/Carousel/Carousel";
 
-const Recommendations = ({recommendations}) => {
-  console.log(recommendations)
-  return (
-    <Carousel results={{recommendations}}/> //TODO add check for recommendations
-  )
-}
+const Recommendations = ({ recommendations }) => {
+  console.log("Recommendations", recommendations);
+  return recommendations.length > 0 ? (
+    <Carousel results={recommendations} />
+  ) : (
+    <h2>No recommendations</h2>
+  );
+};
 
-const mapStateToProps = state => {
-  return { recommendations: state.display.recommendations.recommendations}
-}
+const mapStateToProps = (state) => {
+  return { recommendations: state.display.recommendations };
+};
 
-const mapDispatchToProps = dispatch => {
-  return {}
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Recommendations)
+export default connect(mapStateToProps)(Recommendations);

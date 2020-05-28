@@ -13,24 +13,24 @@ import {
   GetSimilarAndRecommendations,
   StartFetchMovies,
   StartFetchSearch,
-} from '../actions/actionTypes'
+} from "../actions/actionTypes";
 // noinspection NpmUsedModulesInstalled
-import { put, call, takeEvery, select, all } from '@redux-saga/core/effects'
+import { put, call, takeEvery, select } from "@redux-saga/core/effects";
 import {
   errorHandler,
+  hideFooter,
   hideLoader,
-  showFooter,
   showLoader,
 } from "../actions/uiActions";
 import {
   getGenreSuccsess,
-  getMoviesSuccess, getSimilarAndRecommendationsSuccsess,
+  getMoviesSuccess,
+  getSimilarAndRecommendationsSuccsess,
   inputValueChange,
   searchResultUpdate,
   setNumOfPages,
   showSelectedMovie,
-} from '../actions/displayActions'
-
+} from "../actions/displayActions";
 
 export default function* rootSaga() {
   yield takeEvery(StartFetchMovies, fetchTopMovies);
@@ -69,7 +69,6 @@ function* fetchTopMovies(action) {
       yield put(getGenreSuccsess(payload.data.genres));
     }
     yield put(hideLoader());
-    yield put(showFooter());
   } catch (e) {
     yield put(errorHandler(e));
   }
@@ -95,17 +94,14 @@ function* fetchSearch(action) {
 }
 
 function* getMovie({ payload }) {
-  yield call(console.log, payload);
   try {
+    yield put(hideFooter());
     const query = {
       path: justMovie,
       movie: payload,
     };
     const response = yield call(getData, query);
     const id = response.data;
-
-    yield call(console.log, response);
-    yield call(console.log, id);
     yield put(showSelectedMovie(id));
     yield put(searchResultUpdate());
   } catch (e) {
@@ -118,7 +114,6 @@ function* clearInput() {
   yield put(searchResultUpdate());
 }
 
-
 function* getSimilarAndRecommendations(movieId) {
   try {
     const queryR = {
@@ -128,15 +123,13 @@ function* getSimilarAndRecommendations(movieId) {
       path: `${justMovie}${movieId.payload}${similar}`,
     };
     const similarResult = yield call(getData, queryS);
-    yield call(console.log, similarResult)
     const recommendationsResult = yield call(getData, queryR);
-    const payload ={
-      similarResult: similarResult.data.results, recommendationsResult: recommendationsResult.data.results
-    }
-    yield call(console.log, payload)
+    const payload = {
+      similarResult: similarResult.data.results,
+      recommendationsResult: recommendationsResult.data.results,
+    };
     yield put(getSimilarAndRecommendationsSuccsess(payload));
   } catch (e) {
     yield call(console.log, e);
   }
 }
-

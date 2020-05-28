@@ -1,22 +1,18 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import Carousel from '../../components/Carousel/Carousel'
+import React from "react";
+import { connect } from "react-redux";
+import Carousel from "../../components/Carousel/Carousel";
 
-const Similar = ({similar}) => {
-  return (
-    <Carousel results={similar}/>
-  )
-}
+const Similar = ({ similar }) => {
+  console.log("SIMILAR", similar);
+  return similar.length > 0 ? (
+    <Carousel results={similar} />
+  ) : (
+    <h2>No similar</h2>
+  );
+};
 
-const mapStateToProps = state => {
-  return { similar: state.display.similar}
-}
+const mapStateToProps = (state) => {
+  return { similar: state.display.similar };
+};
 
-const mapDispatchToProps = dispatch => {
-  return {}
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Similar)
+export default connect(mapStateToProps)(Similar);

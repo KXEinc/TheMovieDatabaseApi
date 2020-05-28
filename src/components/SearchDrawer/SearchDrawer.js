@@ -3,31 +3,32 @@ import Input from "../Input/Input";
 import { useHistory } from "react-router-dom";
 import { movieSearch } from "../../API/API";
 
-
-
 const Search = ({
   inputHandler,
   inputValue,
   searchResults,
   clearSearchList,
   allowInput,
-  getMovie
-
+  getMovie,
 }) => {
-
-  const history = useHistory()
-  //TODO add no result page
+  const history = useHistory();
   const searchResultRender = ({ key }) => {
     if (key === "Enter" && inputValue.length > 0) {
-      clearSearchList(searchResults,  `${inputValue}`);
+      clearSearchList(searchResults, `${inputValue}`);
       history.push(`/search/${inputValue}`);
     }
   };
 
-  const selectMovieHandler = id => {
+  const selectMovieHandler = (id) => {
     getMovie(id);
-    history.push(`movie/${id}`)
-  }
+    history.push(`/movie/${id}`);
+  };
+
+  const onFocusHandler = (value) => {
+    if (value.length > 0) {
+      inputHandler(value, movieSearch);
+    }
+  };
 
   return (
     <div className={"search__container"}>
@@ -41,6 +42,9 @@ const Search = ({
             onkeydown={(e) => {
               searchResultRender(e);
             }}
+            onfocus={(e) => {
+              onFocusHandler(e.target.value);
+            }}
             value={inputValue}
             className={"search__input"}
             type={"search"}
@@ -51,12 +55,14 @@ const Search = ({
         <li>
           <ul className={"search__list search__list_overflow"}>
             {searchResults &&
-            searchResults.map((el) => {
+              searchResults.map((el) => {
                 return (
                   <li
                     key={el.id}
                     className={"search__item_pt5 search__item_plr5"}
-                    onClick={() => {selectMovieHandler(el.id)}}
+                    onClick={() => {
+                      selectMovieHandler(el.id);
+                    }}
                     tabIndex={"0"}
                   >
                     {el.title}
