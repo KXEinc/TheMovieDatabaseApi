@@ -3,13 +3,12 @@ import {
   ClearSearchList,
   GetGenreSuccsess,
   GetMoviesSuccess,
-  GetRecommendationsSuccsess,
-  GetSimilarSuccsess,
+  GetSimilarAndRecommendationsSuccsess,
   InputValueChange,
   SearchSuccsess,
   SetNumOfPages,
   ShowSelectedMovie,
-} from "./actionTypes";
+} from './actionTypes'
 
 export function getMoviesSuccess({ page, total_pages, results, genre_ids }) {
   return {
@@ -54,7 +53,6 @@ export function setNumOfPages(numOfPages) {
 }
 
 export function showSelectedMovie(movie) {
-  console.log("movie", movie);
   return {
     type: ShowSelectedMovie,
     payload: movie,
@@ -77,17 +75,10 @@ export function clearSearchList(result = [], path) {
   };
 }
 
-export function getRecommendationsSuccsess(recommendations) {
+export function getSimilarAndRecommendationsSuccsess(payload) {
   return {
-    type: GetRecommendationsSuccsess,
-    payload: recommendations,
-  };
-}
-
-export function getSimilarSuccsess(id) {
-  return {
-    type: GetSimilarSuccsess,
-    payload: id,
+    type: GetSimilarAndRecommendationsSuccsess,
+    payload
   };
 }
 

@@ -1,15 +1,21 @@
 import axios from "axios";
-import { APIkey, genre, justMovie, movieURL, recommendations, similar } from '../../API/API'
+import {
+  APIkey,
+  genre,
+  justMovie,
+  movieURL,
+  recommendations,
+  similar,
+} from "../../API/API";
 import {
   ClearInput,
   GetMovie,
-  GetRecommendations,
-  GetSimilar,
+  GetSimilarAndRecommendations,
   StartFetchMovies,
   StartFetchSearch,
-} from "../actions/actionTypes";
+} from '../actions/actionTypes'
 // noinspection NpmUsedModulesInstalled
-import { put, call, takeEvery, select } from "@redux-saga/core/effects";
+import { put, call, takeEvery, select, all } from '@redux-saga/core/effects'
 import {
   errorHandler,
   hideLoader,
@@ -18,20 +24,20 @@ import {
 } from "../actions/uiActions";
 import {
   getGenreSuccsess,
-  getMoviesSuccess, getRecommendationsSuccsess, getSimilarSuccsess,
+  getMoviesSuccess, getSimilarAndRecommendationsSuccsess,
   inputValueChange,
   searchResultUpdate,
   setNumOfPages,
   showSelectedMovie,
 } from '../actions/displayActions'
 
+
 export default function* rootSaga() {
   yield takeEvery(StartFetchMovies, fetchTopMovies);
   yield takeEvery(StartFetchSearch, fetchSearch);
   yield takeEvery(ClearInput, clearInput);
   yield takeEvery(GetMovie, getMovie);
-  yield takeEvery(GetSimilar, getSimilar);
-  yield takeEvery(GetRecommendations, getRecommendations);
+  yield takeEvery(GetSimilarAndRecommendations, getSimilarAndRecommendations);
 }
 
 async function getData({ path, params = {}, movie = "" }) {
@@ -42,8 +48,6 @@ async function getData({ path, params = {}, movie = "" }) {
     },
   });
 }
-
-
 
 function* fetchTopMovies(action) {
   yield put(showLoader());
@@ -57,12 +61,12 @@ function* fetchTopMovies(action) {
     ) {
       yield put(setNumOfPages(payload.data.total_pages));
     }
-    if (state.display.genreList.length === 0 ) {
+    if (state.display.genreList.length === 0) {
       const request = {
-        path: genre
-      }
+        path: genre,
+      };
       const payload = yield call(getData, request);
-      yield put(getGenreSuccsess(payload.data.genres))
+      yield put(getGenreSuccsess(payload.data.genres));
     }
     yield put(hideLoader());
     yield put(showFooter());
@@ -115,52 +119,23 @@ function* clearInput() {
 }
 
 
-function* getSimilar(id) {
+function* getSimilarAndRecommendations(movieId) {
   try {
-    const query = {
-      path: justMovie + id + similar,
+    const queryR = {
+      path: `${justMovie}${movieId.payload}${recommendations}`,
     };
-    const payload = yield call(getData, query);
-    yield put(getSimilarSuccsess(payload.data.results))
+    const queryS = {
+      path: `${justMovie}${movieId.payload}${similar}`,
+    };
+    const {similarResult, recommendationsResult} = yield all( {similarResult: call(getData, queryS),
+      recommendationsResult: call(getData, queryR)});
+    const payload ={
+      similarResult: similarResult.data.results, recommendationsResult: recommendationsResult.data.results
+    }
+    yield call(console.log, payload)
+    yield put(getSimilarAndRecommendationsSuccsess(payload));
   } catch (e) {
-    console.log(e);
+    yield call(console.log, e);
   }
 }
 
-function* getRecommendations(id) {
-  try {
-    const query = {
-      path: justMovie + id + recommendations,
-    };
-    const payload = yield call(getData, query);
-    yield put(getRecommendationsSuccsess(payload.data.results))
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-// genre: {},
-// similar: [],
-//   recommendations: []
-//
-
-// export function getGenre (id) {
-//   return {
-//     type: GetGenre,
-//     payload: id
-//   }
-//
-// }export function getSimilar (id) {
-//   return {
-//     type: GetSimilar,
-//     payload: id
-//   }
-// }
-//
-//
-// export function getRecommendations (id) {
-//   return {
-//     type: GetRecommendations,
-//     payload: id
-//   }
-// }

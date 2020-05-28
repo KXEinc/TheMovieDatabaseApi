@@ -11,9 +11,6 @@ const AboutMovieDrawer = ({ movie: { adult, original_language, overview, poster_
       : "/assert/noimage/noimageavailable.gif";
 
   const genres = genreList.filter(el=> genre_ids.includes(el.id))
-  console.log(genreList)
-  console.log(genre_ids)
-  console.log(genres)
 
   return (
     <div className={"about-movie-card about-movie-card_center"}>

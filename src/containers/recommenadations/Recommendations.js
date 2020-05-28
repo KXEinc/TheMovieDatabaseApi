@@ -2,14 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Carousel from '../../components/Carousel/Carousel'
 
-const Similar = ({similar}) => {
+const Recommendations = ({recommendations}) => {
   return (
-    <Carousel similar={similar}/>
+    <Carousel recommendations={{recommendations}}/>
   )
 }
 
 const mapStateToProps = state => {
-  return { similar: state.display.similar}
+  return { recommendations: state.display.recommendations.recommendations}
 }
 
 const mapDispatchToProps = dispatch => {
@@ -19,4 +19,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Similar)
+)(Recommendations)

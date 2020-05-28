@@ -1,20 +1,23 @@
 import {
-  ClearSearchList, GetGenreSuccsess,
-  GetMoviesSuccess, GetRecommendationsSuccsess, GetSimilarSuccsess,
+  ClearSearchList,
+  GetGenreSuccsess,
+  GetMoviesSuccess,
+  GetRecommendationsSuccsess,
+  GetSimilarAndRecommendationsSuccsess,
+  GetSimilarSuccsess,
   InputValueChange,
   SearchSuccsess,
   SetNumOfPages,
   ShowFindedMovie,
   ShowSelectedMovie,
-} from '../actions/actionTypes'
-
+} from "../actions/actionTypes";
 
 const initialState = {
   page: null,
   numOfPages: 0,
   pages: [],
   searchInputValue: "",
-  movie: null,
+  movie: {},
   movies: [],
   findedMovies: [],
   results: [],
@@ -22,7 +25,7 @@ const initialState = {
   id: null,
   genreList: [],
   similar: [],
-  recommendations: []
+  recommendations: [],
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -30,7 +33,6 @@ export default (state = initialState, { type, payload }) => {
     case SetNumOfPages:
       return { ...state, pages: payload.pages };
     case ShowSelectedMovie:
-      console.log(payload);
       return { ...state, movie: payload, id: payload.id };
     case InputValueChange:
       return { ...state, searchInputValue: payload.value };
@@ -40,7 +42,7 @@ export default (state = initialState, { type, payload }) => {
         path: payload.path,
         page: payload.page,
         numOfPages: payload.numOfPages,
-        movies: payload.results
+        movies: payload.results,
       };
     case SearchSuccsess:
       return { ...state, results: payload.result.results };
@@ -48,16 +50,22 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, movies: payload.movies, results: [], path: `search` };
     }
     case ClearSearchList: {
-      return { ...state, findedMovies: payload.result, results: [], path: payload.path };
+      return {
+        ...state,
+        findedMovies: payload.result,
+        results: [],
+        path: payload.path,
+      };
     }
-    case GetRecommendationsSuccsess: {
-      return {...state, recommendations: payload}
-    }
-    case GetSimilarSuccsess: {
-      return {...state, similar: payload}
+    case GetSimilarAndRecommendationsSuccsess: {
+      return {
+        ...state,
+        recommendations: payload.recommendationsResult,
+        similar: payload.similarResult,
+      };
     }
     case GetGenreSuccsess: {
-      return {...state, genreList: payload}
+      return { ...state, genreList: payload };
     }
     default:
       return state;
