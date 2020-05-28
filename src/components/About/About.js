@@ -3,10 +3,13 @@ import { connect } from "react-redux";
 import {
   allowInput,
   hideFooter,
-  prohibitInput, showFooter,
-} from '../../redux/actions/uiActions'
-import { clearSearchList, inputValueChange } from '../../redux/actions/displayActions'
-
+  prohibitInput,
+  showFooter,
+} from "../../redux/actions/uiActions";
+import {
+  clearSearchList,
+  inputValueChange,
+} from "../../redux/actions/displayActions";
 
 const About = (props) => {
   useEffect(() => {
@@ -14,12 +17,14 @@ const About = (props) => {
       props.clearSearchList();
       props.inputValueChange();
     }
-    props.hideFooter();
+    if (props.showFooter) {
+      props.hideFooter();
+    }
     //props.clearSearch();
     props.prohibitInput();
     return () => {
       props.allowInput();
-      props.showFooter()
+      props.displayFooter();
     };
     // eslint-disable-next-line
   }, []);
@@ -30,15 +35,18 @@ const About = (props) => {
         This is my <strong>AWESOME</strong> project!
         <br />I hope you will like it!
         <br />
-        Version: beta 0.1.6
+        Version: beta 0.2.6
       </p>
     </div>
   );
 };
 
-const mapStateToProps = state => {
-  return {inputValue: state.display.searchInputValue}
-}
+const mapStateToProps = (state) => {
+  return {
+    inputValue: state.display.searchInputValue,
+    showFooter: state.ui.showFooter,
+  };
+};
 
 const mapReducerToProps = (reducer) => {
   return {
@@ -47,7 +55,7 @@ const mapReducerToProps = (reducer) => {
     inputValueChange: () => reducer(inputValueChange()),
     allowInput: () => reducer(allowInput()),
     prohibitInput: () => reducer(prohibitInput()),
-    showFooter: () => reducer(showFooter())
+    displayFooter: () => reducer(showFooter()),
   };
 };
 

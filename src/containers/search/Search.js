@@ -1,17 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 import SearchDrawer from "../../components/SearchDrawer/SearchDrawer";
-import { fetchSearch } from '../../redux/actions/fetchActions'
+import { fetchSearch, getMovie } from '../../redux/actions/fetchActions'
 import { clearSearchList } from '../../redux/actions/displayActions'
 
 
 
-const Search = ({clearSearchList, searchResults, startFetchSearch, value, allowInput }) => {
+const Search = ({clearSearchList, searchResults, startFetchSearch, value, allowInput, getMovie }) => {
   return <SearchDrawer inputHandler={startFetchSearch}
                        inputValue={value}
                        searchResults={searchResults}
                        clearSearchList={clearSearchList}
                        allowInput={allowInput}
+                       getMovie={getMovie}
 
   />;
 };
@@ -28,7 +29,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     startFetchSearch: (value, path) => dispatch(fetchSearch(value, path)),
-    clearSearchList: result => dispatch(clearSearchList(result))
+    clearSearchList: result => dispatch(clearSearchList(result)),
+    getMovie: id => dispatch(getMovie(id))
   };
 };
 

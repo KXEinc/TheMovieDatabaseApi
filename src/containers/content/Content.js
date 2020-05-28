@@ -4,14 +4,16 @@ import About from "../../components/About/About";
 import { connect } from "react-redux";
 import FindedCards from '../findCards/FindedCards'
 import TopMovies from '../topMovies/TopMovies'
+import AboutMovie from '../aboutMovie/AboutMovie'
 
-const Content = ({ path, page, showLoader }) => {
+const Content = ({ page, id }) => {
   //TODO: show err instead loader
   return (
     <div className={"content"}>
       <Switch>
         <Route path={`/search`} component={FindedCards} />
         <Route path={`/${page}`} component={TopMovies} />
+        <Route path={`/movie/${id}`} component={AboutMovie} />
         <Route path="/about" component={About} />
       </Switch>
     </div>

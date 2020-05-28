@@ -4,12 +4,14 @@ import { useHistory } from "react-router-dom";
 import { movieSearch } from "../../API/API";
 
 
+
 const Search = ({
   inputHandler,
   inputValue,
   searchResults,
   clearSearchList,
-  allowInput
+  allowInput,
+  getMovie
 
 }) => {
 
@@ -49,7 +51,7 @@ const Search = ({
                   <li
                     key={el.id}
                     className={"search__item_pt5 search__item_plr5"}
-                    onClick={() => {}}
+                    onClick={() => {getMovie(el.id)}}
                     tabIndex={"0"}
                   >
                     {el.title}

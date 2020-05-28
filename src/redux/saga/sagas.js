@@ -1,35 +1,38 @@
 import axios from "axios";
-import { APIkey, movieURL } from "../../API/API";
+import { APIkey, justMovie, movieURL } from '../../API/API'
 import {
-  ClearInput,
+  ClearInput, GetMovie,
   ShowSelectedMovie,
   StartFetchMovies,
   StartFetchSearch,
-} from "../actions/actionTypes";
+} from '../actions/actionTypes'
+// noinspection NpmUsedModulesInstalled
 import { put, call, takeEvery } from "@redux-saga/core/effects";
 import {
   errorHandler,
   hideLoader,
   showFooter,
-  showLoader, showModal,
-} from '../actions/uiActions'
+  showLoader,
+  showModal,
+} from "../actions/uiActions";
 import {
   getMoviesSuccess,
   inputValueChange,
-  searchResultUpdate, selectMovie,
+  searchResultUpdate,
+  selectMovie,
   setNumOfPages,
-} from '../actions/displayActions'
+} from "../actions/displayActions";
 
 export default function* rootSaga() {
   yield takeEvery(StartFetchMovies, fetchTopMovies);
   yield takeEvery(StartFetchSearch, fetchSearch);
   yield takeEvery(ClearInput, clearInput);
   yield takeEvery(ShowSelectedMovie, showMovie);
+  yield takeEvery(GetMovie ,getMovie);
 }
 
-async function getData({ path, params }) {
-  await setTimeout(() => {}, 1000);
-  return await axios.get(movieURL.concat(path), {
+async function getData({ path, params ={}, movie = '' }) {
+  return await axios.get(movieURL + path + movie, {
     params: {
       api_key: APIkey,
       ...params,
@@ -69,13 +72,30 @@ function* fetchSearch(action) {
   }
 }
 
+
+function* getMovie({ payload }) {
+  try {
+    const query ={
+      path: justMovie,
+      movie: payload
+    }
+    const response = yield call(getData, query);
+    const id = {
+      payload: response.data
+    }
+    yield call(showMovie, id);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 function* clearInput() {
   yield put(inputValueChange());
   yield put(searchResultUpdate());
 }
 
 function* showMovie(movie) {
+
   yield put(selectMovie(movie.payload));
   yield put(showModal());
-
 }

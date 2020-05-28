@@ -1,6 +1,7 @@
 export const APIkey = "8fd040f48bfcd3581afbc6e139da814e";
 export const topRate = "/movie/top_rated";
 export const movieSearch = "/search/movie";
+export const justMovie = "/movie/"
 export const movieURL = "https://api.themoviedb.org/3";
 export const posterURL = "http://image.tmdb.org/t/p/w185";
 

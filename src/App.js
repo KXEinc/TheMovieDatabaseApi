@@ -22,10 +22,8 @@ const App = ({ getMovies }) => {
   useEffect(() => {
     getMovies(topRate, fetchParams);
     history.push("1");
-    console.log("0000");
     //eslint-disable-next-line
   }, []);
-  console.log("111");
   return (
     <>
       <NavBar />

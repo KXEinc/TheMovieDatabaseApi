@@ -18,3 +18,4 @@ export const ShowFindedMovie = "ShowFindedMovie";
 export const ClearInput = "ClearInput";
 export const ClearSearchList = "ClearSearchList";
 export const ShowSelectedMovie = "ShowSelectedMovie";
+export const GetMovie = "GetMovie";

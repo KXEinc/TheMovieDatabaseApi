@@ -1,4 +1,4 @@
-import { StartFetchMovies, StartFetchSearch } from './actionTypes'
+import { GetMovie, StartFetchMovies, StartFetchSearch } from './actionTypes'
 
 export function getMovies(path, params) {
   return {
@@ -12,4 +12,13 @@ export function fetchSearch(value, path) {
     type: StartFetchSearch,
     payload: { value, path },
   };
+}
+
+
+export function getMovie (id) {
+  return {
+    type: GetMovie,
+    payload: id
+  }
+
 }
