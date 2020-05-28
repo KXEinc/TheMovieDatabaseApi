@@ -3,12 +3,15 @@ import Card from "../Card/Card";
 import {useHistory} from "react-router-dom"
 
 import Loader from "../Loader/Loader";
+import { GetSimilarAndRecommendations } from '../../redux/actions/actionTypes'
+import { getSimilarAndRecommendations } from '../../redux/actions/fetchActions'
 
 const Cards = ({ movies, displayLoader, showSelectedMovie }) => {
   const history = useHistory();
 
-  const displaySelectedMovie = movie => {
-    showSelectedMovie(movie);
+const displaySelectedMovie = movie => {
+    getSimilarAndRecommendations(movie.id)
+    showSelectedMovie(movie); //TODO move it inside getSimilarAndRecommendations
     history.push(`/movie/${movie.id}`);
   }
   return displayLoader ? (

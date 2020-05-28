@@ -3,8 +3,9 @@ import { connect } from 'react-redux'
 import Carousel from '../../components/Carousel/Carousel'
 
 const Recommendations = ({recommendations}) => {
+  console.log(recommendations)
   return (
-    <Carousel recommendations={{recommendations}}/>
+    <Carousel results={{recommendations}}/> //TODO add check for recommendations
   )
 }
 

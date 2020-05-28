@@ -4,7 +4,7 @@ import Carousel from '../../components/Carousel/Carousel'
 
 const Similar = ({similar}) => {
   return (
-    <Carousel similar={similar}/>
+    <Carousel results={similar}/>
   )
 }
 

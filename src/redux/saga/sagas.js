@@ -127,8 +127,9 @@ function* getSimilarAndRecommendations(movieId) {
     const queryS = {
       path: `${justMovie}${movieId.payload}${similar}`,
     };
-    const {similarResult, recommendationsResult} = yield all( {similarResult: call(getData, queryS),
-      recommendationsResult: call(getData, queryR)});
+    const similarResult = yield call(getData, queryS);
+    yield call(console.log, similarResult)
+    const recommendationsResult = yield call(getData, queryR);
     const payload ={
       similarResult: similarResult.data.results, recommendationsResult: recommendationsResult.data.results
     }

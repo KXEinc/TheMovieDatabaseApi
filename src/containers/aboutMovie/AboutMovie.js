@@ -14,16 +14,22 @@ const AboutMovie = ({
   getSimilarAndRecommendations,
   hideFooter,
 }) => {
-  useEffect(() => {
-    getSimilarAndRecommendations(movie.id);
-    //hideFooter();
-  }, []);
+  // useEffect(() => {
+  //   console.log("I was fired!");
+  //   if (movie.id) {
+  //     hideFooter();
+  //     getSimilarAndRecommendations(movie.id);
+  //
+  //   }
+  //
+  //
+  // }, [movie.id]);
 
   if (Object.keys(movie).length > 0) {
     return (
       <>
         <AboutMovieDrawer movie={movie} genreList={genreList} />
-        <Similar />
+        {/*<Similar />*/}
         <Recommendations />
       </>
     );
