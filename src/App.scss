@@ -8,11 +8,11 @@
 @import "containers/navPath/navPath";
 @import "components/SearchDrawer/searchDrawer";
 @import "components/Cards/cards";
-@import "./containers/content/content";
+@import "containers/content/content";
 @import "components/FooterDrawer/footerDrawer";
-@import "components/ModalWindow/modalWindow";
 @import "components/AboutMovieDrawer/AboutMovieDrawer";
 @import "hoc/scrollhandler";
+@import "components/Carousel/carousel";
 
 body {
   background: linear-gradient(90deg, #fd8355 0%, #f0576c 37%, #f79cbd 100%);

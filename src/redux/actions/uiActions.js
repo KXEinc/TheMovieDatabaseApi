@@ -1,12 +1,10 @@
 import {
   AllowInput,
-  CloseModal,
   ErrorHappaned,
   HideFooter,
   HideLoader, ProhibitInput,
   ShowFooter,
   ShowLoader,
-  ShowModal
 } from './actionTypes'
 
 export function showLoader() {
@@ -40,17 +38,7 @@ export function hideFooter() {
   };
 }
 
-export function showModal() {
-  return {
-    type: ShowModal,
-  };
-}
 
-export function closeModal() {
-  return {
-    type: CloseModal,
-  };
-}
 
 export function allowInput() {
   return {

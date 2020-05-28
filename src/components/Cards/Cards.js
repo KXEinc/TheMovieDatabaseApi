@@ -6,9 +6,10 @@ import Loader from "../Loader/Loader";
 
 const Cards = ({ movies, displayLoader, showSelectedMovie }) => {
   const history = useHistory();
+
   const displaySelectedMovie = movie => {
     showSelectedMovie(movie);
-    history.push(`${movie.id}`);
+    history.push(`/movie/${movie.id}`);
   }
   return displayLoader ? (
     <Loader />

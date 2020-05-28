@@ -1,9 +1,10 @@
 import React from "react";
 
 import { topRate } from "../../API/API";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 
 const linkCreater = (pages, page, numOfPages, getMovies) => {
+
   let navLinks = [];
   if (pages.length === 0) {
   } else if (page < 10) {
@@ -13,11 +14,18 @@ const linkCreater = (pages, page, numOfPages, getMovies) => {
   } else {
     navLinks = pages.slice(page - 5, page + 5);
   }
+
+
+
+  const clickHandler = (el) => {
+    getMovies(topRate, { page: el });
+    //setTimeout(() => history.push(`/${el}`), 0)
+  };
+
   return navLinks.map((el, i) => (
-    <NavLink key={i} to={`/${el}`}>
+    <NavLink key={i} to={'/' + el} onClick={() => clickHandler(el)}>
       <button
         className={"navLinks-container__btn "}
-        onClick={() => getMovies(topRate, { page: el })}
       >
         {el}
       </button>
@@ -26,11 +34,14 @@ const linkCreater = (pages, page, numOfPages, getMovies) => {
 };
 
 const FooterDrawer = ({ pages, page, numOfPages, getMovies }) => {
-  const navLinks = linkCreater(pages, page, numOfPages, getMovies);
+  const history = useHistory();
+  const navLinks = linkCreater(pages, page, numOfPages, getMovies, history);
   return (
     <div className={"footer-container"}>
       <div className={"navLinks-container"}>
-        <Link to={`/${1}`} onClick={() => getMovies(topRate, { page: '1' })}>First Page</Link>
+        <Link to={`/${1}`} onClick={() => getMovies(topRate, { page: "1" })}>
+          First Page
+        </Link>
         {navLinks}
         <Link
           onClick={() => getMovies(topRate, { page: numOfPages })}

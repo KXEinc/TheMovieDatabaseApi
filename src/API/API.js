@@ -4,6 +4,9 @@ export const movieSearch = "/search/movie";
 export const justMovie = "/movie/"
 export const movieURL = "https://api.themoviedb.org/3";
 export const posterURL = "http://image.tmdb.org/t/p/w185";
+export const similar = "/similar";
+export const recommendations = "/recommendations";
+export const genre = "/genre/movie/list";
 
 /*
  * Example API Request

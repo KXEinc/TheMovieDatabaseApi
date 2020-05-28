@@ -1,4 +1,10 @@
-import { GetMovie, StartFetchMovies, StartFetchSearch } from './actionTypes'
+import {
+  GetMovie,
+  GetRecommendations,
+  GetSimilar,
+  StartFetchMovies,
+  StartFetchSearch
+} from './actionTypes'
 
 export function getMovies(path, params) {
   return {
@@ -20,5 +26,19 @@ export function getMovie (id) {
     type: GetMovie,
     payload: id
   }
+}
 
+export function getSimilar (id) {
+  return {
+    type: GetSimilar,
+    payload: id
+  }
+}
+
+
+export function getRecommendations (id) {
+  return {
+    type: GetRecommendations,
+    payload: id
+  }
 }

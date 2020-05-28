@@ -19,10 +19,15 @@ const Search = ({
   //TODO add no result page
   const searchResultRender = ({ key }) => {
     if (key === "Enter" && inputValue.length > 0) {
-      history.push(`/search?q=${inputValue}`);
-      clearSearchList(searchResults);
+      clearSearchList(searchResults,  `${inputValue}`);
+      history.push(`/search/${inputValue}`);
     }
   };
+
+  const selectMovieHandler = id => {
+    getMovie(id);
+    history.push(`movie/${id}`)
+  }
 
   return (
     <div className={"search__container"}>
@@ -51,7 +56,7 @@ const Search = ({
                   <li
                     key={el.id}
                     className={"search__item_pt5 search__item_plr5"}
-                    onClick={() => {getMovie(el.id)}}
+                    onClick={() => {selectMovieHandler(el.id)}}
                     tabIndex={"0"}
                   >
                     {el.title}

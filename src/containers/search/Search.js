@@ -29,7 +29,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     startFetchSearch: (value, path) => dispatch(fetchSearch(value, path)),
-    clearSearchList: result => dispatch(clearSearchList(result)),
+    clearSearchList: (result, path) => dispatch(clearSearchList(result, path)),
     getMovie: id => dispatch(getMovie(id))
   };
 };

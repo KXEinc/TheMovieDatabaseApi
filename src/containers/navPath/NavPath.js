@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 const NavPath = (props) => (
   <div className={"navPath navPath_mr1"}>
     <NavLink className={"navPath__link_flex-shrink"} to={`/${props.page}`}>
-      Home
+      Movies
     </NavLink>
     <NavLink to={"/about"}>About</NavLink>
   </div>
@@ -17,13 +17,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-
-  }
-}
-
-
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(NavPath);
+export default connect(mapStateToProps)(NavPath);

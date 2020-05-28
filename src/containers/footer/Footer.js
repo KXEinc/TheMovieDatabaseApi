@@ -5,7 +5,6 @@ import FooterDrawer from "../../components/FooterDrawer/FooterDrawer";
 import { getMovies } from "../../redux/actions/fetchActions";
 
 
-//
 const Footer = ({ pages, page, numOfPages, getMovies, showFooter }) => (
   showFooter && <FooterDrawer
     pages={pages}

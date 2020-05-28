@@ -1,19 +1,25 @@
 import {
-  ClearInput, ClearSearchList,
+  ClearInput,
+  ClearSearchList,
+  GetGenreSuccsess,
   GetMoviesSuccess,
+  GetRecommendationsSuccsess,
+  GetSimilarSuccsess,
   InputValueChange,
-  SearchSuccsess, SelectMovie,
-  SetNumOfPages, ShowSelectedMovie,
-} from './actionTypes'
+  SearchSuccsess,
+  SetNumOfPages,
+  ShowSelectedMovie,
+} from "./actionTypes";
 
-export function getMoviesSuccess({ page, total_pages, results }) {
+export function getMoviesSuccess({ page, total_pages, results, genre_ids }) {
   return {
     type: GetMoviesSuccess,
     payload: {
       page,
       numOfPages: total_pages,
       results,
-      path: page
+      path: page,
+      genreList: genre_ids,
     },
   };
 }
@@ -26,7 +32,6 @@ export function inputValueChange(value = "") {
   };
 }
 
-
 export function searchResultUpdate(result = []) {
   return {
     type: SearchSuccsess,
@@ -37,7 +42,9 @@ export function searchResultUpdate(result = []) {
 }
 
 export function setNumOfPages(numOfPages) {
-  const pageNumArr = Array(numOfPages).fill('').map((el, i) => el = i + 1);
+  const pageNumArr = Array(numOfPages)
+    .fill("")
+    .map((el, i) => (el = i + 1));
   return {
     type: SetNumOfPages,
     payload: {
@@ -46,33 +53,47 @@ export function setNumOfPages(numOfPages) {
   };
 }
 
-export function showSelectedMovie(movie){
+export function showSelectedMovie(movie) {
+  console.log("movie", movie);
   return {
     type: ShowSelectedMovie,
-    payload: movie
-  }
+    payload: movie,
+  };
 }
 
-
-export function selectMovie(movie) {
+export function clearInput() {
   return {
-    type: SelectMovie,
+    type: ClearInput,
+  };
+}
+
+export function clearSearchList(result = [], path) {
+  return {
+    type: ClearSearchList,
     payload: {
-      movie,
+      result,
+      path,
     },
   };
 }
 
-
-export function clearInput() {
+export function getRecommendationsSuccsess(recommendations) {
   return {
-    type: ClearInput
-  }
+    type: GetRecommendationsSuccsess,
+    payload: recommendations,
+  };
 }
 
-export function clearSearchList (result =[]) {
+export function getSimilarSuccsess(id) {
   return {
-    type: ClearSearchList,
-    payload: result
-  }
+    type: GetSimilarSuccsess,
+    payload: id,
+  };
+}
+
+export function getGenreSuccsess(genres) {
+  return {
+    type: GetGenreSuccsess,
+    payload: genres,
+  };
 }
