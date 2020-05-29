@@ -21,3 +21,5 @@ export const GetMovie = "GetMovie";
 export const GetSimilarAndRecommendations = "GetSimilarAndRecommendations";
 export const GetSimilarAndRecommendationsSuccsess = "GetSimilarAndRecommendationsSuccsess";
 export const GetGenreSuccsess = "GetGenreSuccsess";
+export const UpdateSimilar = "UpdateSimilar";
+export const UpdateRecommendation = "UpdateRecommendation";

@@ -8,6 +8,8 @@ import {
   SetNumOfPages,
   ShowFindedMovie,
   ShowSelectedMovie,
+  UpdateRecommendation,
+  UpdateSimilar,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -64,6 +66,12 @@ export default (state = initialState, { type, payload }) => {
     }
     case GetGenreSuccsess: {
       return { ...state, genreList: payload };
+    }
+    case UpdateRecommendation: {
+      return { ...state, recommendations: payload };
+    }
+    case UpdateSimilar: {
+      return { ...state, similar: payload };
     }
     default:
       return state;

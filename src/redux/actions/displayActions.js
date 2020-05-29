@@ -7,8 +7,8 @@ import {
   InputValueChange,
   SearchSuccsess,
   SetNumOfPages,
-  ShowSelectedMovie,
-} from "./actionTypes";
+  ShowSelectedMovie, UpdateRecommendation, UpdateSimilar,
+} from './actionTypes'
 
 export function getMoviesSuccess({ page, total_pages, results, genre_ids }) {
   return {
@@ -87,4 +87,18 @@ export function getGenreSuccsess(genres) {
     type: GetGenreSuccsess,
     payload: genres,
   };
+}
+
+export function updateSimilar(newArr) {
+  return {
+    type: UpdateSimilar,
+    payload: newArr
+  }
+}
+
+export function updateRecommendationRe(newArr) {
+  return {
+    type: UpdateRecommendation,
+    payload: newArr
+  }
 }

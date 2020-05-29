@@ -1,21 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { posterURL } from "../../API/API";
 import { useHistory } from "react-router-dom";
 
-const Carousel = ({ results, title, onclick }) => {
+const Carousel = ({ results, title, onclick, update }) => {
   const history = useHistory();
-
-  useEffect(() => {
-    console.log("results", results);
-    console.log("state", state);
-    forceUpdate();
-  });
-
-  const useForceUpdate = () => {
-    const [, setState] = useState()
-    return setState
-  }
- const forceUpdate = useForceUpdate()
 
   const items = results.map((el, i) => (
     <img
@@ -27,33 +15,27 @@ const Carousel = ({ results, title, onclick }) => {
     />
   ));
 
-  const [state, setState] = useState({ items });
-
   const displaySelectedMovie = (movie) => {
     onclick(movie);
     history.push(`/movie/${movie.id}`);
   };
 
+
+
   const slideLeft = () => {
-    setState((state) => {
-      const arrOfItems = [...state.items];
-      const temp = arrOfItems.shift();
-      arrOfItems.push(temp);
-      return {
-        items: arrOfItems,
-      };
-    });
+    const arrOfItems = [...results];
+    const temp = arrOfItems.shift();
+    arrOfItems.push(temp);
+    update(arrOfItems);
   };
 
+
+
   const slideRight = () => {
-    setState((state) => {
-      const arrOfItems = [...state.items];
-      const temp = arrOfItems.pop();
-      arrOfItems.unshift(temp);
-      return {
-        items: arrOfItems,
-      };
-    });
+    const arrOfItems = [...results];
+    const temp = arrOfItems.pop();
+    arrOfItems.unshift(temp);
+    update(arrOfItems);
   };
 
   return (
@@ -63,7 +45,7 @@ const Carousel = ({ results, title, onclick }) => {
         <div className={"carousel__btn carousel__btn-left"} onClick={slideLeft}>
           left
         </div>
-        <div className={"carousel__container"}>{state.items}</div>
+        <div className={"carousel__container"}>{items}</div>
         <div
           className={"carousel__btn carousel__btn-right"}
           onClick={slideRight}
