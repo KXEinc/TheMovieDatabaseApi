@@ -10,6 +10,7 @@ import {
   clearSearchList,
   inputValueChange,
 } from "../../redux/actions/displayActions";
+import { version } from '../../variables/variables'
 
 const About = (props) => {
   useEffect(() => {
@@ -30,12 +31,12 @@ const About = (props) => {
   }, []);
 
   return (
-    <div className={"about"}>
+    <div className={"about about_size about_bg-color"}>
       <p className={"about__text"}>
         This is my <strong>AWESOME</strong> project!
         <br />I hope you will like it!
         <br />
-        Version: beta 0.6.6
+        Version: {version}
       </p>
     </div>
   );

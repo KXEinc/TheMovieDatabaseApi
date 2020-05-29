@@ -1,10 +1,11 @@
 import React from "react";
-import { posterURL } from "../../API/API";
+import { posterURLw185 } from "../../API/API";
 
 const Cart = ({ movie, onclick }) => {
+  // noinspection JSUnresolvedVariable
   const poster =
     movie.poster_path
-      ? posterURL.concat(movie.poster_path)
+      ? posterURLw185.concat(movie.poster_path)
       : "/assert/noimage/noimageavailable.gif";
   return (
     <div

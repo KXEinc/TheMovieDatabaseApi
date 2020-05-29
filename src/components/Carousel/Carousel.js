@@ -1,26 +1,31 @@
 import React from "react";
-import { posterURL } from "../../API/API";
+import { posterURLw185 } from "../../API/API";
+// noinspection ES6CheckImport
 import { useHistory } from "react-router-dom";
 
 const Carousel = ({ results, title, onclick, update }) => {
   const history = useHistory();
 
-  const items = results.map((el, i) => (
-    <img
-      key={i}
-      src={posterURL + el.poster_path}
-      className={"carousel__item carousel__item_mlr5"}
-      alt={"poster"}
-      onClick={() => displaySelectedMovie(el)}
-    />
-  ));
+  const items = results.map((el, i) => {
+    // noinspection JSUnresolvedVariable
+    const poster_path = el.poster_path
+      ? posterURLw185.concat(el.poster_path)
+      : "/assert/noimage/noimageavailable.gif";
+    return (
+      <img
+        key={i}
+        src={poster_path}
+        className={"carousel__item carousel__item_mlr5"}
+        alt={"poster"}
+        onClick={() => displaySelectedMovie(el)}
+      />
+    );
+  });
 
   const displaySelectedMovie = (movie) => {
     onclick(movie);
     history.push(`/movie/${movie.id}`);
   };
-
-
 
   const slideLeft = () => {
     const arrOfItems = [...results];
@@ -28,8 +33,6 @@ const Carousel = ({ results, title, onclick, update }) => {
     arrOfItems.push(temp);
     update(arrOfItems);
   };
-
-
 
   const slideRight = () => {
     const arrOfItems = [...results];
