@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import { posterURL } from "../../API/API";
 
 const AboutMovieDrawer = ({
@@ -14,6 +14,7 @@ const AboutMovieDrawer = ({
   } = {},
   genreList,
 }) => {
+
   //eslint-disable-next-line
   const genresOfMovieId =
     genres.length > 0 ? genres.map((el) => el.id) : genre_ids;

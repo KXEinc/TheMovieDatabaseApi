@@ -1,9 +1,9 @@
 import {
-  GetMovie, GetSimilarAndRecommendations,
-  GetSimilarAndRecommendationsSuccsess,
+  GetMovie,
+  GetSimilarAndRecommendations,
   StartFetchMovies,
-  StartFetchSearch
-} from './actionTypes'
+  StartFetchSearch,
+} from "./actionTypes";
 
 export function getMovies(path, params) {
   return {
@@ -19,19 +19,16 @@ export function fetchSearch(value, path) {
   };
 }
 
-
 export function getMovie(id) {
   return {
     type: GetMovie,
-    payload: id
-  }
+    payload: id,
+  };
 }
 
 export function getSimilarAndRecommendations(id) {
   return {
     type: GetSimilarAndRecommendations,
-    payload: id
-  }
+    payload: id,
+  };
 }
-
-

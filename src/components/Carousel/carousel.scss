@@ -238,6 +238,10 @@
   &__container {
     display: flex;
     justify-content: space-between;
+    align-content: space-between;
+    //align-items: center;
+    flex-wrap: wrap;
+    height: 250px;
     //flex-wrap: wrap;
     overflow: hidden;
     width: 90%;
@@ -246,6 +250,7 @@
   &__item {
     &_mlr5 {
       margin: 0 5px;
+      height: 250px;
     }
   }
   &__btn {

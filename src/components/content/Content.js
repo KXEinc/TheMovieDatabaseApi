@@ -1,14 +1,13 @@
-import React from "react";
+import React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
-import About from "../../components/About/About";
-import FindedCards from '../findCards/FindedCards'
-import TopMovies from '../topMovies/TopMovies'
-import AboutMovie from '../aboutMovie/AboutMovie'
+import About from "../About/About";
+import FindedCards from '../../containers/findCards/FindedCards'
+import TopMovies from '../../containers/topMovies/TopMovies'
+import AboutMovie from '../../containers/aboutMovie/AboutMovie'
 
 
 const Content = () => {
 
-  //TODO: show err instead loader
   return (
     <div className={"content"}>
       <Switch>

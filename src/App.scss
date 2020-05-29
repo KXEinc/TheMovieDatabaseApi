@@ -1,21 +1,27 @@
-@import "scss/normalize";
-@import "components/About/about";
-@import "components/Button/button";
-@import "components/Input/input";
-@import "components/Loader/loader";
-@import "components/Card/card";
-@import "components/NavBar/navbar";
-@import "containers/navPath/navPath";
-@import "components/SearchDrawer/searchDrawer";
-@import "components/Cards/cards";
-@import "containers/content/content";
-@import "components/FooterDrawer/footerDrawer";
-@import "components/AboutMovieDrawer/AboutMovieDrawer";
-@import "hoc/scrollhandler";
-@import "components/Carousel/carousel";
+@use "scss/mixins";
+@use "scss/variables";
+@use "scss/normalize";
+@use "components/About/about";
+@use "components/Button/button";
+@use "components/Input/input";
+@use "components/Loader/loader";
+@use "components/Card/card";
+@use "components/NavBar/navbar";
+@use "components/SearchDrawer/searchDrawer";
+@use "components/Cards/cards";
+@use "components/content/content";
+@use "components/FooterDrawer/footerDrawer";
+@use "components/AboutMovieDrawer/AboutMovieDrawer";
+@use "hoc/scrollhandler";
+@use "components/Carousel/carousel";
+@use "scss/navLink";
+
+html{
+  font-size: 14px;
+}
 
 body {
-  background: linear-gradient(90deg, #fd8355 0%, #f0576c 37%, #f79cbd 100%);
+  background: #fff;
 }
 
 ul {

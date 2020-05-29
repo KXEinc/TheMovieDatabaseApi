@@ -3,9 +3,15 @@
   align-content: center;
   transform: translate(-50%, -50%);
   margin: 50vh 0 0 50vw;
-  height: 10rem;
+
   width: 20rem;
-  background-color: aqua;
+  background-color: white;
   text-align: center;
   font-size: 25px;
+
+  border-radius: 5% 5%;
+  &__text{
+    text-align: center;
+    padding: 10px;
+  }
 }

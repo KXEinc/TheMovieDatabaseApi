@@ -8,7 +8,7 @@ import { topRate } from "./API/API";
 import { getMovies } from './redux/actions/fetchActions'
 import NavBar from "./components/NavBar/NavBar";
 import ScrollHandler from "./hoc/ScrollHandler";
-import Content from "./containers/content/Content";
+import Content from "./components/content/Content";
 import Footer from './containers/footer/Footer'
 
 

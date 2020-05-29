@@ -31,9 +31,10 @@ const Search = ({
   };
 
   return (
-    <div className={"search__container"}>
-      <ul className={"search__input search__list_ml5"}>
-        <li>
+    <div className={"search-container"}>
+      <div className={"search-container__list-wrapper"}>
+      <ul className={"search-container__list"}>
+        <li className={"search-container__list__input-li"}>
           <Input
             tabndex={"0"}
             onchange={(e) => {
@@ -46,32 +47,29 @@ const Search = ({
               onFocusHandler(e.target.value);
             }}
             value={inputValue}
-            className={"search__input"}
+            className={"search-container__list__input"}
             type={"search"}
             placeholder={"Enter the movie's name"}
             readonly={!allowInput}
           />
         </li>
-        <li>
-          <ul className={"search__list search__list_overflow"}>
-            {searchResults &&
-              searchResults.map((el) => {
-                return (
-                  <li
-                    key={el.id}
-                    className={"search__item_pt5 search__item_plr5"}
-                    onClick={() => {
-                      selectMovieHandler(el.id);
-                    }}
-                    tabIndex={"0"}
-                  >
-                    {el.title}
-                  </li>
-                );
-              })}
-          </ul>
-        </li>
+        {searchResults &&
+        searchResults.map((el) => {
+          return (
+            <li
+              key={el.id}
+              className={"search-container__list__item"}
+              onClick={() => {
+                selectMovieHandler(el.id);
+              }}
+              tabIndex={"0"}
+            >
+              {el.title}
+            </li>
+          );
+        })}
       </ul>
+      </div>
     </div>
   );
 };

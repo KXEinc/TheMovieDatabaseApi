@@ -1,0 +1,27 @@
+@import "../scss/mixins";
+@import "../scss/variables";
+
+.navLink{
+  padding: 5px;
+  text-decoration: none;
+  box-sizing: border-box;
+  &_color{
+    color: #fff;
+  }
+  &_size{
+    margin: 5px;
+    @include responseTo($SmallDevices){
+      font-size: 1rem;
+  };
+    @include responseTo($MediumDevices){
+      font-size: 1.5rem;
+  };
+    @include responseTo($LargeDevices){
+      font-size: 2rem;
+  };
+    @include responseTo($ExtraLargeDevices){
+      font-size: 2.5rem;
+      margin: 20px;
+  };
+  }
+}

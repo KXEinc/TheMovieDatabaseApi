@@ -1,0 +1,5 @@
+@mixin responseTo($_minWidth) {
+  @media (min-width: $_minWidth) {
+    @content;
+  }
+}
