@@ -228,19 +228,18 @@
 //}
 
 .carousel {
-  margin: 0 auto;
+  margin: 10px auto;
   display: flex;
   border: 1px solid black;
   height: 100%;
-  width: 90%;
+  width: 95%;
   align-items: center;
   justify-content: space-between;
-  margin-top: 10px; //!temporary
   &__container {
     display: flex;
     justify-content: space-between;
     //flex-wrap: wrap;
-    overflow: auto;
+    overflow: hidden;
     width: 90%;
     border: 1px solid black;
   }

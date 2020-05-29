@@ -105,7 +105,7 @@ function* getMovie({ payload }) {
     yield put(showSelectedMovie(id));
     yield put(searchResultUpdate());
   } catch (e) {
-    yield console.log(e);
+    yield call(console.log, e);
   }
 }
 

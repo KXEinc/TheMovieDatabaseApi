@@ -35,7 +35,7 @@ const About = (props) => {
         This is my <strong>AWESOME</strong> project!
         <br />I hope you will like it!
         <br />
-        Version: beta 0.6.3
+        Version: beta 0.6.4
       </p>
     </div>
   );

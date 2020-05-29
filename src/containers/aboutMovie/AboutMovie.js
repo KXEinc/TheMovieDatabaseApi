@@ -15,11 +15,11 @@ const AboutMovie = ({
   hideFooter,
 }) => {
   useEffect(() => {
-    if (movie.id) {
+    if (movie) {
       hideFooter();
       getSimilarAndRecommendations(movie.id);
     }
-  }, [movie.id]);
+  }, [movie]);
 
   if (Object.keys(movie).length > 0) {
     return (
