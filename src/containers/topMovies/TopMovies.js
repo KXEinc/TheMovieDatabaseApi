@@ -6,7 +6,7 @@ import {
   clearInput,
   showSelectedMovie,
 } from "../../redux/actions/displayActions";
-import { showFooter } from "../../redux/actions/uiActions";
+import { showNavElements } from "../../redux/actions/uiActions";
 
 const TopMovies = ({
   movies,
@@ -14,18 +14,18 @@ const TopMovies = ({
   clearInput,
   inputValue,
   showSelectedMovie,
-  showFooter,
-  displayFooter
+  showNavElements,
+  displayNavElements
 }) => {
   useEffect(() => {
     if (inputValue.length > 0) {
       clearInput();
     }
-    if (!showFooter) {
-      displayFooter();
+    if (!showNavElements  && !displayLoader) {
+     displayNavElements();
     }
     // noinspection JSCheckFunctionSignatures
-  }, [ clearInput, showFooter, displayFooter]);
+  }, [ clearInput, showNavElements, displayNavElements, displayLoader]);
 
   return (
     <Cards
@@ -41,7 +41,7 @@ const mapStateToProps = (state) => {
     displayLoader: state.ui.displayLoader,
     movies: state.display.movies,
     inputValue: state.display.searchInputValue,
-    showFooter: state.ui.showFooter,
+    showNavElements: state.ui.showNavElements,
   };
 };
 
@@ -49,7 +49,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     clearInput: () => dispatch(clearInput()),
     showSelectedMovie: (movie) => dispatch(showSelectedMovie(movie)),
-    displayFooter: () => dispatch(showFooter()),
+    displayNavElements: () => dispatch(showNavElements()),
   };
 };
 

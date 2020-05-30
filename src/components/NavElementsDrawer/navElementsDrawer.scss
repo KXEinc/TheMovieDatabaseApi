@@ -1,0 +1,61 @@
+@import "src/scss/variables";
+@import "src/scss/mixins";
+
+.navLinks-container {
+  width: 50%;
+  margin: 50px auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  &__btn {
+    flex: 0 0 auto;
+    text-decoration: none;
+    font-weight: bold;
+    color: $baseColor;
+    font-size: 0.8rem;
+    padding: 0 10px;
+    @include responseTo($SmallDevices) {
+      font-size: 0.9rem;
+  }
+    @include responseTo($MediumDevices) {
+      font-size: 1rem;
+  }
+    @include responseTo($LargeDevices) {
+      font-size: 1.5rem;
+  }
+    @include responseTo($ExtraLargeDevices) {
+      font-size: 1.7rem;
+  }
+}
+
+.pages-links {
+  display: flex;
+  justify-content: space-around;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  min-width: 100px;
+  &__navLink {
+    padding: 3px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    @include responseTo($SmallDevices) {
+      font-size: 0.8rem;
+    }
+    @include responseTo($MediumDevices) {
+      font-size: 1rem;
+    }
+    @include responseTo($LargeDevices) {
+      font-size: 1.5rem;
+    }
+    @include responseTo($ExtraLargeDevices) {
+      font-size: 1.7rem;
+    }
+    color: $baseColor;
+    &_active {
+      border: 2px solid $baseColor;
+      }
+    }
+  }
+}

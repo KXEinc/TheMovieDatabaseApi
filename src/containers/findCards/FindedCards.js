@@ -2,20 +2,20 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Cards from "../../components/Cards/Cards";
 import { showSelectedMovie } from "../../redux/actions/displayActions";
-import { hideFooter } from "../../redux/actions/uiActions";
+import { hideNavElements } from "../../redux/actions/uiActions";
 
 const FindedCards = ({
   movies,
   displayLoader,
   showSelectedMovie,
-  hideFooter,
-  showFooter,
+  hideNavElements,
+  showNavElements,
 }) => {
   useEffect(() => {
-    if (showFooter) {
-      hideFooter();
+    if (showNavElements) {
+      hideNavElements();
     }
-  }, [showFooter, hideFooter]);
+  }, [showNavElements, hideNavElements]);
   return (
     <Cards
       displayLoader={displayLoader}
@@ -29,7 +29,7 @@ const mapStateToProps = (state) => {
   return {
     displayLoader: state.ui.displayLoader,
     movies: state.display.findedMovies,
-    showFooter: state.ui.showFooter,
+    showNavElements: state.ui.showNavElements,
   };
 };
 
@@ -37,7 +37,7 @@ const mapDispatchToState = (dispatch) => {
   // noinspection JSUnusedGlobalSymbols
   return {
     showSelectedMovie: (movie) => dispatch(showSelectedMovie(movie)),
-    hideFooter: () => dispatch(hideFooter()),
+    hideNavElements: () => dispatch(hideNavElements()),
   };
 };
 

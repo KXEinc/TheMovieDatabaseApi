@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import {
   allowInput,
-  hideFooter,
+  hideNavElements,
   prohibitInput,
-  showFooter,
+  showNavElements,
 } from "../../redux/actions/uiActions";
 import {
   clearSearchList,
@@ -18,14 +18,14 @@ const About = (props) => {
       props.clearSearchList();
       props.inputValueChange();
     }
-    if (props.showFooter) {
-      props.hideFooter();
+    if (props.showNavElements) {
+      props.hideNavElements();
     }
     //props.clearSearch();
     props.prohibitInput();
     return () => {
       props.allowInput();
-      props.displayFooter();
+      props.displayNavElements();
     };
     // eslint-disable-next-line
   }, []);
@@ -45,18 +45,18 @@ const About = (props) => {
 const mapStateToProps = (state) => {
   return {
     inputValue: state.display.searchInputValue,
-    showFooter: state.ui.showFooter,
+    showNavElements: state.ui.showNavElements,
   };
 };
 
 const mapReducerToProps = (reducer) => {
   return {
-    hideFooter: () => reducer(hideFooter()),
+    hideNavElements: () => reducer(hideNavElements()),
     clearSearchList: () => reducer(clearSearchList()),
     inputValueChange: () => reducer(inputValueChange()),
     allowInput: () => reducer(allowInput()),
     prohibitInput: () => reducer(prohibitInput()),
-    displayFooter: () => reducer(showFooter()),
+    displayNavElements: () => reducer(showNavElements()),
   };
 };
 

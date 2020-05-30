@@ -1,20 +1,18 @@
 import {
   AllowInput,
-  CloseModal, ErrorHappaned,
-  HideFooter,
+  ErrorHappaned,
+  HideNavElements,
   HideLoader,
   ProhibitInput,
-  ShowFooter,
+  ShowNavElements,
   ShowLoader,
-  ShowModal,
-} from '../actions/actionTypes'
+} from "../actions/actionTypes";
 
 const initialState = {
   displayLoader: false,
-  showModal: false,
-  showFooter: false,
+  showNavElements: true,
   allowInput: true,
-  error: ''
+  error: "",
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -23,20 +21,16 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, displayLoader: true };
     case HideLoader:
       return { ...state, displayLoader: false };
-    case ShowFooter:
-      return { ...state, showFooter: true };
-    case HideFooter:
-      return { ...state, showFooter: false };
-    case ShowModal:
-      return { ...state, showModal: true };
-    case CloseModal:
-      return { ...state, showModal: false };
+    case ShowNavElements:
+      return { ...state, showNavElements: true };
+    case HideNavElements:
+      return { ...state, showNavElements: false };
     case AllowInput:
       return { ...state, allowInput: true };
     case ProhibitInput:
       return { ...state, allowInput: false };
     case ErrorHappaned:
-      return {...state, error: payload.error}
+      return { ...state, error: payload.error };
     default:
       return state;
   }

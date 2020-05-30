@@ -1,9 +1,9 @@
 import {
   AllowInput,
   ErrorHappaned,
-  HideFooter,
+  HideNavElements,
   HideLoader, ProhibitInput,
-  ShowFooter,
+  ShowNavElements,
   ShowLoader,
 } from './actionTypes'
 
@@ -26,15 +26,15 @@ export function errorHandler(err) {
   };
 }
 
-export function showFooter() {
+export function showNavElements() {
   return {
-    type: ShowFooter,
+    type: ShowNavElements,
   };
 }
 
-export function hideFooter() {
+export function hideNavElements() {
   return {
-    type: HideFooter,
+    type: HideNavElements,
   };
 }
 

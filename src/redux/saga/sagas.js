@@ -18,10 +18,10 @@ import {
 import { put, call, takeEvery, select } from "@redux-saga/core/effects";
 import {
   errorHandler,
-  hideFooter,
+  hideNavElements,
   hideLoader,
-  showLoader,
-} from "../actions/uiActions";
+  showLoader, showNavElements,
+} from '../actions/uiActions'
 import {
   getGenreSuccsess,
   getMoviesSuccess,
@@ -50,6 +50,7 @@ async function getData({ path, params = {}, movie = "" }) {
 }
 
 function* fetchTopMovies(action) {
+  yield put(hideNavElements());
   yield put(showLoader());
   try {
     const payload = yield call(getData, action.payload);
@@ -69,6 +70,7 @@ function* fetchTopMovies(action) {
       yield put(getGenreSuccsess(payload.data.genres));
     }
     yield put(hideLoader());
+    yield put(showNavElements());
   } catch (e) {
     yield put(errorHandler(e));
   }
@@ -98,7 +100,7 @@ function* fetchSearch(action) {
 
 function* getMovie({ payload }) {
   try {
-    yield put(hideFooter());
+    yield put(hideNavElements());
     const query = {
       path: justMovie,
       movie: payload,

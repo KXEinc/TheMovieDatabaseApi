@@ -33,5 +33,6 @@
   }
   &[readonly]{
     background-color: lightgray;
+    cursor: not-allowed;
   }
 }

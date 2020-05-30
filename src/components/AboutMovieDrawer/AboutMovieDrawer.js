@@ -1,5 +1,5 @@
 import React from 'react'
-import { posterURLw500 } from "../../API/API";
+import { posterURLw342 } from "../../API/API";
 
 const AboutMovieDrawer = ({
   movie: {
@@ -19,7 +19,7 @@ const AboutMovieDrawer = ({
   const genresOfMovieId =
     genres.length > 0 ? genres.map((el) => el.id) : genre_ids;
   const poster = poster_path
-    ? posterURLw500.concat(poster_path)
+    ? posterURLw342.concat(poster_path)
     : "/assert/noimage/noimageavailable.gif";
 
   const genresList = genreList.filter((el) => genresOfMovieId.includes(el.id));

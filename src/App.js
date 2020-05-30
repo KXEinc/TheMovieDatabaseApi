@@ -9,7 +9,7 @@ import { getMovies } from './redux/actions/fetchActions'
 import NavBar from "./components/NavBar/NavBar";
 import ScrollHandler from "./hoc/ScrollHandler";
 import Content from "./components/content/Content";
-import Footer from './containers/footer/Footer'
+import NavElements from './containers/navElements/NavElements'
 
 
 
@@ -29,7 +29,7 @@ const App = ({ getMovies }) => {
       <NavBar />
       <ScrollHandler>
         <Content />
-      <Footer/>
+      <NavElements/>
       </ScrollHandler>
     </>
   );
