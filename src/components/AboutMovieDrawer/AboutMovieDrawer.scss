@@ -7,12 +7,11 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  //align-items: center;
-  //align-content: center;
   box-sizing: border-box;
   width: 100%;
   padding: 10px 20px;
-  @include responseTo($MediumDevices) {
+  @include responseTo($LargeDevices) {
+    flex-wrap: nowrap;
   }
   &__text{
     font-weight: normal;
@@ -20,31 +19,32 @@
   &__poster{
     box-shadow: 0 0 20px 5px rgba(0, 0, 0, 1);
     height: 100%;
-    @include responseTo($MediumDevices) {
-      //width: 100%;
+    width: 80%;
+    margin-bottom: 15px;
+    @include responseTo($LargeDevices) {
+      margin-bottom: 0;
+      width: 40%;
     }
   }
   &__information{
     display: block;
     box-sizing: border-box;
-
     padding: 10px;
     background-color: #edf4ff;
     box-shadow: 0 0 20px 5px rgba(0, 0, 0, 1);
+    font-size: 0.8rem;
+    width: 80%;
     @include responseTo($SmallDevices) {
-      width: 35%;
       font-size: 0.9rem;
     }
     @include responseTo($MediumDevices) {
-      width: 45%;
       font-size: 1rem;
     }
     @include responseTo($LargeDevices) {
-      width: 55%;
+      width: 50%;
       font-size: 1.1rem;
     }
     @include responseTo($ExtraLargeDevices) {
-      width: 70%;
       font-size: 1.2rem;
     }
     & :nth-child(n){
@@ -54,10 +54,19 @@
   }
   &__description{
     padding-right: 10px;
-    font-size: 1.4rem;
+    font-size: 0.8rem;
     font-family: 'Raleway', sans-serif;
+    @include responseTo($SmallDevices) {
+      font-size: 0.9rem;
+    }
     @include responseTo($MediumDevices) {
+      font-size: 1rem;
+    }
+    @include responseTo($LargeDevices) {
       font-size: 1.1rem;
+    }
+    @include responseTo($ExtraLargeDevices) {
+      font-size: 1.2rem;
     }
   }
 }

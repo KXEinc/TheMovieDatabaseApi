@@ -12,13 +12,15 @@ const Carousel = ({ results, title, onclick, update }) => {
       ? posterURLw185.concat(el.poster_path)
       : "/assert/noimage/noimageavailable.gif";
     return (
-      <img
-        key={i}
-        src={poster_path}
-        className={"carousel__item carousel__item_mlr5"}
-        alt={"poster"}
-        onClick={() => displaySelectedMovie(el)}
-      />
+      <div className={'carousel__item__wraper carousel__item__wraper_mlr5'}>
+        <img
+          key={i}
+          src={poster_path}
+          className={"carousel__item"}
+          alt={"poster"}
+          onClick={() => displaySelectedMovie(el)}
+        />
+      </div>
     );
   });
 

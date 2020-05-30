@@ -5,11 +5,14 @@
   margin: 50px 0;
   width: 100%;
   &__item {
-    height: 250px;
-    width: 166px;
-    border: 1px solid $baseColor;
-    &_mlr5 {
-      margin: 0 6px;
+    height: 100%;
+    &__wraper {
+      height: 250px;
+      width: 166px;
+      border: 1px solid $baseColor;
+      &_mlr5 {
+        margin: 0 6px;
+      }
     }
   }
 
@@ -21,6 +24,7 @@
     &__content {
       display: inline-flex;
       justify-content: flex-start;
+      flex-shrink: 0;
       width: 180px;
       overflow: hidden;
       //@include responseTo($SmallDevices) {
