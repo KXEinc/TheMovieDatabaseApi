@@ -17,6 +17,7 @@
 .card__img {
   height: 278px;
   width: 185px;
+  margin-bottom: 5px;
 }
 
 .card__rating {
@@ -27,12 +28,14 @@
   &::before{
     content: "\2605";
     color: gold;
+    margin-right: 5px;
   }
 }
 
 .card__title {
   font-family: 'Anton', sans-serif;
   width: 90%;
+  line-height: 1.4;
   text-align: center;
   margin: 0;
   padding: 10% 5%;

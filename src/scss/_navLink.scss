@@ -24,4 +24,27 @@
       margin: 20px;
   };
   }
+  &_active {
+    padding-bottom: 3px;
+    border-bottom: 2px solid #fff;
+    animation: bottom-line ease forwards alternate 300ms;
+  }
+}
+
+@keyframes bottom-line {
+  0% {
+    border-color: rgba(255, 255, 255, 0);
+  }
+  25%{
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+  50%{
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  75%{
+    border-color: rgba(255, 255, 255, 0.75);
+  }
+  100% {
+    border-color: rgba(255, 255, 255, 1);
+  }
 }

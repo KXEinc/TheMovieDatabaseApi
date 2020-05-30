@@ -23,7 +23,11 @@ const Cards = ({ movies, displayLoader, showSelectedMovie }) => {
           />
         ))
       ) : (
-        <h1>No Result</h1>
+        <div className={"no-result-container"}>
+          <div className={"no-result no-result_size no-result_bg-color"}>
+            <p className={"no-result__text"}>No Result</p>
+          </div>
+        </div>
       )}
     </div>
   );

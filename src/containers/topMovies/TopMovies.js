@@ -25,7 +25,7 @@ const TopMovies = ({
       displayFooter();
     }
     // noinspection JSCheckFunctionSignatures
-  }, []);
+  }, [ clearInput, showFooter, displayFooter]);
 
   return (
     <Cards

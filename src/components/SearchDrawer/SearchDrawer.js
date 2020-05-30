@@ -9,7 +9,7 @@ const Search = ({
   searchResults,
   clearSearchList,
   allowInput,
-  getMovie,
+  getMovie
 }) => {
   const history = useHistory();
   const searchResultRender = ({ key }) => {
@@ -19,9 +19,10 @@ const Search = ({
     }
   };
 
-  const selectMovieHandler = (id) => {
-    getMovie(id);
-    history.push(`/movie/${id}`);
+  const selectMovieHandler = el => {
+    console.log(el)
+    getMovie(el.id);
+    history.push(`/movie/${el.id}`);
   };
 
   const onFocusHandler = (value) => {
@@ -33,42 +34,37 @@ const Search = ({
   return (
     <div className={"search-container"}>
       <div className={"search-container__list-wrapper"}>
-      <ul className={"search-container__list"}>
-        <li className={"search-container__list__input-li"}>
-          <Input
-            tabndex={"0"}
-            onchange={(e) => {
-              inputHandler(e.target.value, movieSearch);
-            }}
-            onkeydown={(e) => {
-              searchResultRender(e);
-            }}
-            onfocus={(e) => {
-              onFocusHandler(e.target.value);
-            }}
-            value={inputValue}
-            className={"search-container__list__input"}
-            type={"search"}
-            placeholder={"Enter the movie's name"}
-            readonly={!allowInput}
-          />
-        </li>
-        {searchResults &&
-        searchResults.map((el) => {
-          return (
-            <li
-              key={el.id}
-              className={"search-container__list__item"}
-              onClick={() => {
-                selectMovieHandler(el.id);
-              }}
-              tabIndex={"0"}
-            >
-              {el.title}
-            </li>
-          );
-        })}
-      </ul>
+        <ul className={"search-container__list"}>
+          <li className={"search-container__list__input-li"}>
+            <Input
+              tabndex={"0"}
+              onchange={(e) => inputHandler(e.target.value, movieSearch)}
+              onkeydown={(e) => searchResultRender(e)}
+              onfocus={(e) => onFocusHandler(e.target.value)}
+              onblur={() => setTimeout(() => clearSearchList(), 150)}
+              value={inputValue}
+              className={"input input_size"}
+              type={"search"}
+              placeholder={"Enter the movie's name"}
+              readonly={!allowInput}
+            />
+          </li>
+          {searchResults &&
+            searchResults.map((el) => {
+              return (
+                <li
+                  key={el.id}
+                  className={"search-container__list__item"}
+                  onClick={() => {
+                    selectMovieHandler(el);
+                  }}
+                  tabIndex={"0"}
+                >
+                  {el.title}
+                </li>
+              );
+            })}
+        </ul>
       </div>
     </div>
   );

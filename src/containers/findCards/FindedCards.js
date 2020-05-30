@@ -15,7 +15,7 @@ const FindedCards = ({
     if (showFooter) {
       hideFooter();
     }
-  }, []);
+  }, [showFooter, hideFooter]);
   return (
     <Cards
       displayLoader={displayLoader}

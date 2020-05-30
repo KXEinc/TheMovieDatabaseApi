@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 const NavPath = (props) => (
 
-    <NavLink className={"navLink navLink_color navLink_size"} to={`/${props.page}`}>
+    <NavLink activeClassName={"navLink_active"} className={"navLink navLink_color navLink_size"} to={`/${props.page}`}>
       Movies
     </NavLink>
 

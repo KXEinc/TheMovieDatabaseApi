@@ -1,104 +1,50 @@
-//.search {
-//  &__container {
-//    height: 50%;
-//    width: 40%;
-//  }
-//  &__input {
-//    box-size: content-box;
-//    list-style-type: none;
-//    width: 100%;
-//    height: 100%;
-//    padding: 0 10px;
-//    border: 1px solid #2f302f;
-//    border-radius: 10px;
-//    &:focus {
-//      outline: none;
-//    }
-//  }
-//
-//  &__item {
-//    &_pt5 {
-//      padding-top: 5px;
-//    }
-//    &_plr5 {
-//      padding: 0 5px;
-//    }
-//    max-height: 50vh;
-//    list-style-type: none;
-//    background-color: white;
-//    padding: 0;
-//    width: 100%;
-//    transform: translateY(-5px);
-//
-//    & :last-child {
-//      padding-bottom: 5px;
-//      border-radius: 0 0 10px 10px;
-//    }
-//    & :first-child {
-//      border: 1px #2f302f;
-//      border-style: solid none none none;
-//      padding-top: 50px;
-//      padding-bottom: 0px;
-//    }
-//    &_overflow {
-//      overflow-y: auto;
-//    }
-//  }
-//}
-//
-//.search-input__li {
-//  height: 100%;
-//  width: 100%;
-//}
 
 .search-container {
   display: flex;
   align-items: center;
   align-content: center;
-  height: 50%;
+  height: 58%;
   width: 40%;
   &__list-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
   }
-  &__list { //TODO I need to figure out how make the scroll look good
+  &__list {
     padding: 0;
     list-style-type: none;
-    max-height: 50vh;
     width: 100%;
-    //overflow-y: auto;
+    height: 100%;
     &__input-li {
-      position: absolute;
-      height: 100%;
-      width: 100%;
       box-sizing: border-box;
-    }
-    &__input {
-      box-sizing: border-box;
-      border: 2px solid black;
-      border-radius: 1.25rem;
-      padding: 0 10px;
-      height: 100%;
       width: 100%;
-      &:focus {
-        outline: none;
+
+      border-radius: 20px 20px 0 0;
+      background-color: white;
+      border: 2px black;
+      border-style: none solid;
+      &:only-child{
+        background-color: transparent;
+        border-color: transparent;
       }
     }
+
     &__item {
+      height: auto;
       box-sizing: content-box;
       padding: 5px;
       background-color: #fff;
       border: 2px black;
       border-style: none solid;
       font-size: 1.1rem;
-      padding: 10px;
       &:nth-child(2) {
-        border-radius: 1.25rem 1.25rem 0 0;
-        padding-top: 50px;
+       //
+        //padding-top: 1rem;
       }
       &:last-child {
         border-style: none solid solid solid;
+        padding-bottom: 10px;
+        border-radius: 0 0 1.25rem 1.25rem;
       }
       &:focus {
         outline: none;

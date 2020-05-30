@@ -7,6 +7,6 @@ export default () => (
   <div className={"navBar navBar_size"}>
     <NavPath />
     <Search />
-    <NavLink to={"/about"} className={"navLink navLink_color navLink_size"}>About</NavLink>
+    <NavLink to={"/about"} activeClassName={"navLink_active"} className={"navLink navLink_color navLink_size"}>About</NavLink>
   </div>
 );

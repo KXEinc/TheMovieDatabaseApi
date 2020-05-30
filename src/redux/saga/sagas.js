@@ -84,6 +84,9 @@ function* fetchSearch(action) {
     let response = {};
     if (action.payload.value.length > 0) {
       response = yield call(getData, query);
+      if (response.data.results.length >= 10) {
+        response.data.results = response.data.results.slice(0, 10);
+      }
     } else {
       response.data = "";
     }

@@ -3,15 +3,11 @@ import { posterURLw185 } from "../../API/API";
 
 const Cart = ({ movie, onclick }) => {
   // noinspection JSUnresolvedVariable
-  const poster =
-    movie.poster_path
-      ? posterURLw185.concat(movie.poster_path)
-      : "/assert/noimage/noimageavailable.gif";
+  const poster = movie.poster_path
+    ? posterURLw185.concat(movie.poster_path)
+    : "/assert/noimage/noimageavailable.gif";
   return (
-    <div
-      onClick={onclick}
-      className={"card__item card__item_m10"}
-    >
+    <div onClick={onclick} className={"card__item card__item_m10"}>
       <img className={"card__img"} src={poster} alt="poster" />
       <h4 className={"card__rating card__rating_m1tb3lr"}>
         {movie.vote_average}
@@ -20,7 +16,5 @@ const Cart = ({ movie, onclick }) => {
     </div>
   );
 };
-
-
 
 export default Cart;

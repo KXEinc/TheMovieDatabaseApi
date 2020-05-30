@@ -7,21 +7,22 @@ import Similar from "../similar/Similar";
 import Recommendations from "../recommenadations/Recommendations";
 import { getSimilarAndRecommendations } from "../../redux/actions/fetchActions";
 import { hideFooter } from "../../redux/actions/uiActions";
+import { inputValueChange } from "../../redux/actions/displayActions";
 
 const AboutMovie = ({
   movie,
   genreList,
   getSimilarAndRecommendations,
   hideFooter,
+  inputValueChange,
 }) => {
   useEffect(() => {
-
+      inputValueChange();
     if (movie) {
       hideFooter();
       getSimilarAndRecommendations(movie.id);
     }
-  }, [movie]);
-
+  }, []);
 
   if (Object.keys(movie).length > 0) {
     return (
@@ -48,6 +49,7 @@ const mapDispatchToProps = (dispatch) => {
     getSimilarAndRecommendations: (id) =>
       dispatch(getSimilarAndRecommendations(id)),
     hideFooter: () => dispatch(hideFooter()),
+    inputValueChange: () => dispatch(inputValueChange()),
   };
 };
 

@@ -1,11 +1,37 @@
-.search {
-  &__input {
+@import "../../scss/mixins";
+@import "../../scss/variables";
+
+.input {
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 1.25rem;
+  padding: 2px 20px;
+  font-weight: bold;
+  &_size{
+    height: 100%;
     width: 100%;
-    &[readonly] {
-      background-color: lightgray;
-      &:focus {
-        outline: none;
-      }
-    }
+    padding: 2px 5px;
+    @include responseTo($SmallDevices){
+      padding: 2px 14px;
+      font-size: 1.2rem;
+    };
+    @include responseTo($MediumDevices){
+      padding: 2px 16px;
+      font-size: 1.5rem;
+    };
+    @include responseTo($LargeDevices){
+      padding: 2px 18px;
+      font-size: 1.7rem;
+    };
+    @include responseTo($ExtraLargeDevices){
+      padding: 2px 20px;
+      font-size: 2rem;
+    };
+  }
+  &:focus {
+    outline: none;
+  }
+  &[readonly]{
+    background-color: lightgray;
   }
 }
