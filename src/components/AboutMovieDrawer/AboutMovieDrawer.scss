@@ -1,23 +1,52 @@
+@import "src/scss/variables";
+@import "src/scss/mixins";
+
+//TODO finish responsive design
+
 .about-movie-card {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+  //align-items: center;
+  //align-content: center;
   box-sizing: border-box;
   width: 100%;
   padding: 10px 20px;
+  @include responseTo($MediumDevices) {
+  }
   &__text{
     font-weight: normal;
   }
   &__poster{
     box-shadow: 0 0 20px 5px rgba(0, 0, 0, 1);
+    height: 100%;
+    @include responseTo($MediumDevices) {
+      //width: 100%;
+    }
   }
   &__information{
-    display: flex;
+    display: block;
     box-sizing: border-box;
-    flex-direction: column;
-    width: 70%;
-    font-size: 1.2rem;
+
     padding: 10px;
     background-color: #edf4ff;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 1);
+    @include responseTo($SmallDevices) {
+      width: 35%;
+      font-size: 0.9rem;
+    }
+    @include responseTo($MediumDevices) {
+      width: 45%;
+      font-size: 1rem;
+    }
+    @include responseTo($LargeDevices) {
+      width: 55%;
+      font-size: 1.1rem;
+    }
+    @include responseTo($ExtraLargeDevices) {
+      width: 70%;
+      font-size: 1.2rem;
+    }
     & :nth-child(n){
       margin: 0;
       padding: 10px;
@@ -27,5 +56,8 @@
     padding-right: 10px;
     font-size: 1.4rem;
     font-family: 'Raleway', sans-serif;
+    @include responseTo($MediumDevices) {
+      font-size: 1.1rem;
+    }
   }
 }

@@ -26,18 +26,27 @@ const AboutMovieDrawer = ({
 
   return (
     <div className={"about-movie-card"}>
-      <div >
-        <img className={"about-movie-card__poster"} src={poster} alt="poster" />
-      </div>
+      <img className={"about-movie-card__poster"} src={poster} alt="poster" />
       <div className={"about-movie-card__information"}>
         <h2>{title}</h2>
-        <h3>Release date: <span className={'about-movie-card__text'}>{release_date}</span></h3>
-        <h3>Original language: <span className={'about-movie-card__text'}>{original_language}</span></h3>
-        <h3>Vote average: <span className={'about-movie-card__text'}>{vote_average}</span></h3>
+        <h3>
+          Release date:{" "}
+          <span className={"about-movie-card__text"}>{release_date}</span>
+        </h3>
+        <h3>
+          Original language:{" "}
+          <span className={"about-movie-card__text"}>{original_language}</span>
+        </h3>
+        <h3>
+          Vote average:{" "}
+          <span className={"about-movie-card__text"}>{vote_average}</span>
+        </h3>
         <h3>
           Genre:{" "}
           {genresList.map((el, i) => (
-            <span className={'about-movie-card__text'} key={i}>{el.name}</span>
+            <span className={"about-movie-card__text"} key={i}>
+              {el.name}
+            </span>
           ))}
         </h3>
         <h3>

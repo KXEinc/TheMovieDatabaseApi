@@ -1,4 +1,5 @@
 @import "src/scss/variables";
+@import "src/scss/mixins";
 
 .carousel {
   margin: 50px 0;
@@ -9,32 +10,44 @@
     border: 1px solid $baseColor;
     &_mlr5 {
       margin: 0 6px;
-
     }
   }
 
   &__container {
     display: flex;
     width: 100%;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     &__content {
-      display: flex;
-      justify-content: space-around;
-      width: 75%;
+      display: inline-flex;
+      justify-content: flex-start;
+      width: 180px;
       overflow: hidden;
+      //@include responseTo($SmallDevices) {
+      //}
+      @include responseTo($MediumDevices) {
+        width: 540px;
+      }
+      @include responseTo($LargeDevices) {
+        width: 720px;
+      }
+      @include responseTo($ExtraLargeDevices) {
+        width: 900px;
+      }
     }
   }
   &__btn {
     display: inline-block;
     width: 0;
     height: 0;
-    border: 50px solid;
-    &_left{
-      border-color:  transparent $baseColor transparent transparent ;
+    border: 25px solid;
+    &_left {
+      border-color: transparent $baseColor transparent transparent;
+      margin-left: auto;
     }
-    &_right{
-      border-color:  transparent transparent  transparent $baseColor;
+    &_right {
+      border-color: transparent transparent transparent $baseColor;
+      margin-right: auto;
     }
   }
   &__title {
