@@ -22,7 +22,7 @@ const AboutMovie = ({
       hideNavElements();
       getSimilarAndRecommendations(movie.id);
     }
-  }, []);
+  }, [movie]);
 
   if (Object.keys(movie).length > 0) {
     return (

@@ -1,15 +1,31 @@
 .about-movie-card {
-  position: relative;
+  display: flex;
+  justify-content: space-around;
   box-sizing: border-box;
-  //width: 500px;
-  //height: 600px;
-  background-color: white;
-  padding: 10px;
-  &_center {
-    //left: 50%;
-    top: 0px;
-    //margin-left: -250px;
-    //margin-top: -300px;
-    //transform: translateY(50%);
+  width: 100%;
+  padding: 10px 20px;
+  &__text{
+    font-weight: normal;
+  }
+  &__poster{
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 1);
+  }
+  &__information{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    width: 70%;
+    font-size: 1.2rem;
+    padding: 10px;
+    background-color: #edf4ff;
+    & :nth-child(n){
+      margin: 0;
+      padding: 10px;
+    }
+  }
+  &__description{
+    padding-right: 10px;
+    font-size: 1.4rem;
+    font-family: 'Raleway', sans-serif;
   }
 }

@@ -42,21 +42,20 @@ const Carousel = ({ results, title, onclick, update }) => {
   };
 
   return (
-    <>
+    <div className={"carousel"}>
       <h2 className={"carousel__tittle carousel__title_center"}>{title}</h2>
-      <div className="carousel" aria-label="Gallery">
-        <div className={"carousel__btn carousel__btn-left"} onClick={slideLeft}>
-          left
-        </div>
-        <div className={"carousel__container"}>{items}</div>
+      <div className={"carousel__container"}>
         <div
-          className={"carousel__btn carousel__btn-right"}
+          className={"carousel__btn carousel__btn_left"}
+          onClick={slideLeft}
+        />
+        <div className={"carousel__container__content"}>{items}</div>
+        <div
+          className={"carousel__btn carousel__btn_right"}
           onClick={slideRight}
-        >
-          right
-        </div>
+        />
       </div>
-    </>
+    </div>
   );
 };
 
